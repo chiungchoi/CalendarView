@@ -291,7 +291,7 @@ open class CalendarView : RecyclerView {
 
             // +0.5 => round to the nearest pixel
             val size = (((widthSize - (monthPaddingStart + monthPaddingEnd)) / 7f) + 0.5).toInt()
-            val height = ((heightSize / 7f) + 0.5).toInt()
+            val height = ((heightSize / 6f) + 0.5).toInt()
             val computedSize = daySize.copy(width = size, height = height)
             if (daySize != computedSize) {
                 sizedInternally = true
