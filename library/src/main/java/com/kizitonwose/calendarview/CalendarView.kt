@@ -283,6 +283,7 @@ open class CalendarView : RecyclerView {
             val widthMode = MeasureSpec.getMode(widthMeasureSpec)
             val widthSize = MeasureSpec.getSize(widthMeasureSpec)
             val heightMode = MeasureSpec.getMode(heightMeasureSpec)
+            val heightSize = MeasureSpec.getSize(heightMeasureSpec)
 
             if (widthMode == UNSPECIFIED && heightMode == UNSPECIFIED) {
                 throw UnsupportedOperationException("Cannot calculate the values for day Width/Height with the current configuration.")
@@ -290,8 +291,7 @@ open class CalendarView : RecyclerView {
 
             // +0.5 => round to the nearest pixel
             val size = (((widthSize - (monthPaddingStart + monthPaddingEnd)) / 7f) + 0.5).toInt()
-
-            val height = if (autoSizeHeight == SQUARE) size else autoSizeHeight
+            val height = ((heightSize / 7f) + 0.5).toInt()
             val computedSize = daySize.copy(width = size, height = height)
             if (daySize != computedSize) {
                 sizedInternally = true
